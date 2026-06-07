@@ -54,7 +54,7 @@ h1{
 }
 
 .logo-img {
-  width: clamp(200px, 40vw, 350px);
+  width: clamp(150px, 25vw, 280px);
   height: auto;
   display: block;
   margin: 0 auto;
