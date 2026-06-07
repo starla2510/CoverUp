@@ -49,13 +49,15 @@ h1{
 
 .logo-container {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  margin-top: -20px;
 }
 
 .logo-img {
-  width: clamp(200px, 50vw, 400px);
+  width: clamp(200px, 40vw, 350px);
   height: auto;
-  
+  display: block;
+  margin: 0 auto;
 }
 
 .logo-container .subjudul {
