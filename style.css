@@ -16,9 +16,10 @@
   --undercover:#ff4545;
 }
 
-*{
+ *{
   margin:0;
   padding:0;
+  --bg: #000000;
   box-sizing:border-box;
 }
 
@@ -46,18 +47,33 @@ h1{
   letter-spacing:-2px;
 }
 
+.logo-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-img {
+  width: clamp(200px, 50vw, 400px);
+  height: auto;
+  
+}
+
+.logo-container .subjudul {
+  margin-top: 0px;
+  margin-bottom: 0;
+}
+
 .subjudul{
   text-align:center;
 
   margin-top:6px;
-  margin-bottom:40px;
 
   color:var(--muted);
 
   text-transform:uppercase;
   letter-spacing:3px;
 
-  font-size:.75rem;
+  max-height: 20%;
 }
 
 .hidden{

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,17 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- ===================================== -->
   <!-- JUDUL -->
   <!-- ===================================== -->
 
-  <h1>UNDERCOVER</h1>
-  <p class="subjudul">Who is lying?</p>
-
+  <div class="logo-container">
+    <img src="Logo.png" alt="Undercover" class="logo-img">
+    <p class="subjudul">Who is lying?</p>
+  </div>
 
 
   <!-- ===================================== -->
@@ -25,13 +28,7 @@
   <section id="setup-section" class="panel">
 
     <label>Jumlah Pemain (6 - 12)</label>
-    <input
-      type="number"
-      id="jumlah-pemain"
-      min="6"
-      max="12"
-      placeholder="Contoh: 8"
-    >
+    <input type="number" id="jumlah-pemain" min="6" max="12" placeholder="Contoh: 8">
 
     <button id="btn-mulai" class="btn btn-primary">
       Mulai Game
@@ -51,11 +48,7 @@
 
       <h2>Daftar Pemain</h2>
 
-      <button
-        id="btn-mulai-voting"
-        class="btn btn-voting"
-        disabled
-      >
+      <button id="btn-mulai-voting" class="btn btn-voting" disabled>
         Mulai Voting →
       </button>
 
@@ -89,10 +82,7 @@
         ingat kata ini baik-baik
       </p>
 
-      <button
-        id="btn-tutup-kata"
-        class="btn"
-      >
+      <button id="btn-tutup-kata" class="btn">
         Tutup
       </button>
 
@@ -116,17 +106,11 @@
         Player 1
       </h3>
 
-      <div
-        id="role-eliminasi"
-        class="role-badge"
-      >
+      <div id="role-eliminasi" class="role-badge">
         Civilian
       </div>
 
-      <button
-        id="btn-tutup-eliminasi"
-        class="btn"
-      >
+      <button id="btn-tutup-eliminasi" class="btn">
         Lanjut
       </button>
 
@@ -159,10 +143,7 @@
       </div>
 
 
-      <button
-        id="btn-main-lagi"
-        class="btn btn-primary"
-      >
+      <button id="btn-main-lagi" class="btn btn-primary">
         Main Lagi
       </button>
 
@@ -175,4 +156,5 @@
   <script src="script.js"></script>
 
 </body>
+
 </html>
