@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undercover Game</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================================== -->
+  <!-- JUDUL -->
+  <!-- ===================================== -->
+
+  <h1>UNDERCOVER</h1>
+  <p class="subjudul">Who is lying?</p>
+
+
+
+  <!-- ===================================== -->
+  <!-- SETUP GAME -->
+  <!-- ===================================== -->
+
+  <section id="setup-section" class="panel">
+
+    <label>Jumlah Pemain (6 - 12)</label>
+    <input
+      type="number"
+      id="jumlah-pemain"
+      min="6"
+      max="12"
+      placeholder="Contoh: 8"
+    >
+
+    <button id="btn-mulai" class="btn btn-primary">
+      Mulai Game
+    </button>
+
+  </section>
+
+
+
+  <!-- ===================================== -->
+  <!-- HALAMAN UTAMA -->
+  <!-- ===================================== -->
+
+  <section id="game-section" class="hidden">
+
+    <div class="header-game">
+
+      <h2>Daftar Pemain</h2>
+
+      <button
+        id="btn-mulai-voting"
+        class="btn btn-voting"
+        disabled
+      >
+        Mulai Voting →
+      </button>
+
+    </div>
+
+
+    <!-- Card pemain dibuat JS -->
+    <div id="player-container" class="player-grid"></div>
+
+  </section>
+
+
+
+  <!-- ===================================== -->
+  <!-- POPUP KATA -->
+  <!-- ===================================== -->
+
+  <div id="popup-kata" class="popup">
+
+    <div class="popup-box">
+
+      <h2 id="popup-player-name">
+        PLAYER 1
+      </h2>
+
+      <div id="popup-kata-text" class="kata-besar">
+        APEL
+      </div>
+
+      <p id="popup-keterangan">
+        ingat kata ini baik-baik
+      </p>
+
+      <button
+        id="btn-tutup-kata"
+        class="btn"
+      >
+        Tutup
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================== -->
+  <!-- POPUP ELIMINASI -->
+  <!-- ===================================== -->
+
+  <div id="popup-eliminasi" class="popup">
+
+    <div class="popup-box">
+
+      <h2>Pemain Tereliminasi</h2>
+
+      <h3 id="nama-eliminasi">
+        Player 1
+      </h3>
+
+      <div
+        id="role-eliminasi"
+        class="role-badge"
+      >
+        Civilian
+      </div>
+
+      <button
+        id="btn-tutup-eliminasi"
+        class="btn"
+      >
+        Lanjut
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================== -->
+  <!-- POPUP GAME OVER -->
+  <!-- ===================================== -->
+
+  <div id="popup-gameover" class="popup">
+
+    <div class="popup-box popup-gameover">
+
+      <h2 id="judul-pemenang">
+        Civilians Menang
+      </h2>
+
+      <p id="deskripsi-pemenang">
+        Semua impostor berhasil ditemukan.
+      </p>
+
+
+      <!-- Reveal semua role -->
+      <div id="reveal-container">
+
+      </div>
+
+
+      <button
+        id="btn-main-lagi"
+        class="btn btn-primary"
+      >
+        Main Lagi
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
