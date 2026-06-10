@@ -1,50 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap');
 
-:root{
-  --bg:#0e0e0e;
-  --surface:#1a1a1a;
-  --border:#2d2d2d;
+:root {
+  --bg: #0e0e0e;
+  --surface: #1a1a1a;
+  --border: #2d2d2d;
 
-  --text:#f5f5f5;
-  --muted:#777;
+  --text: #f5f5f5;
+  --muted: #777;
 
-  --accent:#e8ff3b;
-  --danger:#ff4545;
+  --accent: #e8ff3b;
+  --danger: #ff4545;
 
-  --civilian:#3bffa0;
-  --mrwhite:#ff9f3b;
-  --undercover:#ff4545;
+  --civilian: #3bffa0;
+  --mrwhite: #ff9f3b;
+  --undercover: #ff4545;
 }
 
- *{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   --bg: #000000;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
-body{
-  background:var(--bg);
-  color:var(--text);
+body {
+  /* Hapus background lama, ganti dengan gambar tirai tertutup (Default awal) */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('BG_2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 
-  font-family:'Space Mono', monospace;
+  color: var(--text);
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+  padding: 40px 20px;
 
-  min-height:100vh;
-  
-
-  padding:40px 20px;
+  /* Efek transisi halus saat background berubah */
+  transition: background 0.8s ease-in-out;
 }
 
-h1{
-  text-align:center;
+body.game-started {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('BG_1.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
-  color:var(--accent);
+h1 {
+  text-align: center;
 
-  font-family:'Syne', sans-serif;
-  font-size:clamp(2rem,6vw,4rem);
+  color: var(--accent);
 
-  font-weight:800;
-  letter-spacing:-2px;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+
+  font-weight: 800;
+  letter-spacing: -2px;
 }
 
 .logo-container {
@@ -65,357 +76,416 @@ h1{
   margin-bottom: 0;
 }
 
-.subjudul{
-  text-align:center;
+.subjudul {
+  text-align: center;
 
-  margin-top:6px;
+  margin-top: 6px;
 
-  color:var(--muted);
+  color: var(--muted);
 
-  text-transform:uppercase;
-  letter-spacing:3px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 
   max-height: 20%;
 }
 
-.hidden{
-  display:none;
+.hidden {
+  display: none;
 }
 
 /* ========================= */
 /* PANEL */
 /* ========================= */
 
-.panel{
-  max-width:600px;
-  margin:auto;
+.panel {
+  max-width: 600px;
+  /* Dikembalikan ke 600px agar rasio panjang gambar proporsional */
+  width: 100%;
+  /* Ganti background warna lama dengan gambar baru Anda */
+  background-image: url('Floating window.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  background:var(--surface);
 
-  border:1px solid var(--border);
+  border: none;
+  border-radius: 0;
+  /* Dinonaktifkan karena gambar sudah melengkung otomatis */
 
-  border-radius:14px;
+  border-radius: 28px;
+  overflow: hidden;
 
-  padding:30px;
+  padding: 45px 40px;
+
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-label{
-  display:block;
-
-  margin-bottom:8px;
-
-  font-size:.8rem;
-
-  color:var(--muted);
-
-  text-transform:uppercase;
-  letter-spacing:2px;
+.setup-wrapper {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  /* Jarak antara karakter dan panel input */
+  padding: 20px;
 }
 
-input{
-  width:100%;
-
-  margin-bottom:20px;
-
-  background:var(--bg);
-
-  border:1px solid var(--border);
-
-  color:white;
-
-  padding:14px;
-
-  border-radius:8px;
-
-  font-family:inherit;
+.character-container {
+  flex: 1;
+  max-width: 300px;
+  /* Batas lebar maksimal karakter Anda */
+  display: flex;
+  justify-content: center;
 }
 
-input:focus{
-  outline:none;
-  border-color:var(--accent);
+.character-img {
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media(max-width: 768px) {
+  .setup-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .character-container {
+    max-width: 180px;
+    /* Perkecil karakter saat di layar HP */
+  }
+}
+
+label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: .8rem;
+
+  color: #ffd700;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+input {
+  width: 100%;
+
+  margin-bottom: 20px;
+
+  background: var(--bg);
+
+
+  border: 1px solid var(--border);
+
+  color: white;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* ========================= */
 /* BUTTON */
 /* ========================= */
 
-.btn{
-  border:none;
+.btn {
+  border: 1px solid #9C0001;
 
-  cursor:pointer;
+  cursor: pointer;
+  background-color: #EAA74C;
+  border-radius: 8px;
 
-  border-radius:8px;
+  padding: 12px 18px;
 
-  padding:12px 18px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
 
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-
-  transition:.2s;
+  transition: .2s;
 }
 
-.btn:hover{
-  opacity:.85;
+.btn:hover {
+  opacity: .85;
 }
 
-.btn-primary{
-  background:var(--accent);
-  color:black;
+.btn-primary {
+  background: #EAA74C;
+  color: black;
+  border: 1px solid #9C0001;
 }
 
-.btn-voting{
-  background:var(--accent);
-  color:black;
+.btn-voting {
+  background: var(--accent);
+  color: black;
 }
 
-.btn-voting:disabled{
-  background:#444;
-  color:#888;
-  cursor:not-allowed;
+.btn-voting:disabled {
+  background: #444;
+  color: #888;
+  cursor: not-allowed;
 }
 
 /* ========================= */
 /* HEADER GAME */
 /* ========================= */
 
-.header-game{
-  max-width:1200px;
+.header-game {
+  max-width: 1200px;
 
-  margin:auto;
-  margin-bottom:24px;
+  margin: auto;
+  margin-bottom: 24px;
 
-  display:flex;
+  display: flex;
 
-  justify-content:space-between;
-  align-items:center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.header-game h2{
-  font-family:'Syne', sans-serif;
+.header-game h2 {
+  font-family: 'Syne', sans-serif;
 }
 
 /* ========================= */
 /* GRID PLAYER */
 /* ========================= */
 
-.player-grid{
-  max-width:1200px;
+.player-grid {
+  max-width: 1200px;
 
-  margin:auto;
 
-  display:grid;
+  margin: auto;
+
+  display: grid;
 
   grid-template-columns:
-  repeat(auto-fit,minmax(250px,1fr));
+    repeat(auto-fit, minmax(250px, 1fr));
 
-  gap:18px;
+  gap: 18px;
 }
 
 /* ========================= */
 /* CARD */
 /* ========================= */
 
-.player-card{
-  background:var(--surface);
+.player-card {
+  background: var(--surface);
 
-  border:1px solid var(--border);
 
-  border-radius:14px;
+  border: 1px solid #9C0001;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
 
-  padding:22px;
+  padding: 22px;
 
-  transition:.25s;
+  transition: .25s;
 }
 
-.player-card:hover{
-  transform:translateY(-2px);
+.player-card:hover {
+  transform: translateY(-2px);
 }
 
-.player-card h3{
-  font-family:'Syne', sans-serif;
+.player-card h3 {
+  font-family: 'Syne', sans-serif;
 
-  margin-bottom:8px;
+  margin-bottom: 8px;
 }
 
-.player-status{
-  color:var(--muted);
+.player-status {
+  color: var(--muted);
 
-  font-size:.85rem;
+  font-size: .85rem;
 
-  margin-bottom:18px;
+  margin-bottom: 18px;
 }
 
-.player-card button{
-  width:100%;
+.player-card button {
+  width: 100%;
 }
 
 /* ========================= */
 /* STATUS */
 /* ========================= */
 
-.status-belum{
-  color:#888;
+.status-belum {
+  color: #888;
 }
 
-.status-sudah{
-  color:var(--civilian);
+.status-sudah {
+  color: var(--civilian);
 }
 
-.status-keluar{
-  color:var(--danger);
+.status-keluar {
+  color: var(--danger);
 }
 
 /* pemain sudah buka kartu */
-.player-card.opened{
-  border-color:var(--civilian);
+.player-card.opened {
+  border-color: var(--civilian);
 }
 
 /* pemain tereliminasi */
-.player-card.eliminated{
-  opacity:.35;
+.player-card.eliminated {
+  opacity: .35;
 }
 
 /* ========================= */
 /* POPUP */
 /* ========================= */
 
-.popup{
-  position:fixed;
+.popup {
+  position: fixed;
 
-  inset:0;
+  inset: 0;
 
-  background:rgba(0,0,0,.85);
+  background: rgba(0, 0, 0, .85);
 
-  display:none;
+  display: none;
 
-  justify-content:center;
-  align-items:flex-start;
+  justify-content: center;
+  align-items: flex-start;
   overflow-y: auto;
 
-  padding:20px;
+  padding: 20px;
 
-  z-index:999;
+  z-index: 999;
 }
 
-.popup.active{
-  display:flex;
+.popup.active {
+  display: flex;
 }
 
-.popup-box{
-  background:var(--surface);
+.popup-box {
 
-  border:1px solid var(--border);
+  background-image: url('Floating window (kata).png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  border-radius:16px;
+  border: none;
+  overflow: hidden;
 
-  width:100%;
-  max-width:450px;
+  width: 100%;
+  max-width: 450px;
   margin: auto;
-  text-align:center;
+  text-align: center;
 
-  padding:35px;
+  padding: 45px 35px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
 }
 
-.popup-box h2{
-  font-family:'Syne', sans-serif;
+.popup-box h2 {
+  font-family: 'Syne', sans-serif;
 
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
-.kata-besar{
-  font-family:'Syne', sans-serif;
+.kata-besar {
+  font-family: 'Syne', sans-serif;
 
-  font-size:2rem;
+  font-size: 2rem;
 
-  font-weight:800;
+  font-weight: 800;
 
-  margin:18px 0;
+  margin: 18px 0;
 
-  color:var(--accent);
+  color: var(--accent);
 }
 
-.popup-box p{
-  color:var(--muted);
+.popup-box p {
+  color: var(--muted);
 
-  margin-bottom:25px;
+  margin-bottom: 25px;
 }
 
 /* ========================= */
 /* ROLE BADGE */
 /* ========================= */
 
-.role-badge{
-  display:inline-block;
+.role-badge {
+  display: inline-block;
 
-  padding:10px 20px;
+  padding: 10px 20px;
 
-  border-radius:999px;
+  border-radius: 999px;
 
-  font-family:'Syne', sans-serif;
-  font-weight:700;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
 
-  margin:18px 0 30px;
+  margin: 18px 0 30px;
 }
 
-.role-civilian{
-  background:#103020;
-  color:var(--civilian);
+.role-civilian {
+  background: #103020;
+  color: var(--civilian);
 }
 
-.role-mrwhite{
-  background:#33210d;
-  color:var(--mrwhite);
+.role-mrwhite {
+  background: #33210d;
+  color: var(--mrwhite);
 }
 
-.role-undercover{
-  background:#320f0f;
-  color:var(--undercover);
+.role-undercover {
+  background: #320f0f;
+  color: var(--undercover);
 }
 
 /* ========================= */
 /* GAME OVER */
 /* ========================= */
 
-.popup-gameover{
-  max-width:700px;
+.popup-gameover {
+  max-width: 700px;
 }
 
-#reveal-container{
-  margin-top:25px;
+#reveal-container {
+  margin-top: 25px;
 
-  display:grid;
+  display: grid;
 
-  gap:10px;
+  gap: 10px;
 }
 
-.reveal-item{
-  display:flex;
+.reveal-item {
+  display: flex;
 
-  justify-content:space-between;
-  align-items:center;
+  justify-content: space-between;
+  align-items: center;
 
-  background:var(--bg);
+  background: var(--bg);
 
-  border:1px solid var(--border);
+  border: 1px solid var(--border);
 
-  border-radius:10px;
+  border-radius: 10px;
 
-  padding:12px 16px;
+  padding: 12px 16px;
 }
 
 /* ========================= */
 /* RESPONSIVE */
 /* ========================= */
 
-@media(max-width:768px){
+@media(max-width:768px) {
 
-  .header-game{
-    flex-direction:column;
-    gap:15px;
+  .header-game {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .player-grid{
-    grid-template-columns:1fr;
+  .player-grid {
+    grid-template-columns: 1fr;
   }
 
 }

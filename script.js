@@ -1,6 +1,4 @@
 // CLASS PEMAIN (PARENT)
-
-
 class Pemain {
   #id;
   #kata;
@@ -44,6 +42,9 @@ class Pemain {
   eliminasi() {
     this.#tereliminasi = true;
   }
+
+
+
 
   getRole() {
     return "Unknown";
@@ -149,7 +150,12 @@ class Permainan {
     return this.#daftarPemain.every((p) => p.sudahDibuka());
   }
 
-  cekPemenang() {
+
+
+
+
+  
+    cekPemenang() {
     const aktif = this.#daftarPemain.filter((p) => !p.sudahKeluar());
 
     const impostor = aktif.filter(
@@ -174,7 +180,6 @@ class Permainan {
 
 const permainan = new Permainan();
 
-let votingAktif = false;
 
 // ELEMENT HTML
 
@@ -211,17 +216,13 @@ btnMulai.addEventListener("click", () => {
 
       permainan.buatGame(jumlahPemain, kataRandom.civilian, kataRandom.MrWhite);
 
+      // Mengubah background menjadi BG_1.jpg (tirai terbuka)
+      document.body.classList.add("game-started");
+
       setupSection.classList.add("hidden");
       gameSection.classList.remove("hidden");
       renderPlayer();
     });
-
-  if (!kataCivilian || !kataMrWhite) {
-    alert("Isi semua kata");
-    return;
-  }
-
-  permainan.buatGame(jumlahPemain, kataCivilian, kataMrWhite);
 });
 
 // RENDER PLAYER
